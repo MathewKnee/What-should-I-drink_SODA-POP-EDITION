@@ -1,0 +1,809 @@
+package com.sample
+
+import java.util.Scanner;
+import com.sample.Main.*;
+
+
+declare Enquiry
+   question: String
+   options: String []
+   answer: String
+end
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you in Mexico? (or in a Mexican restaurant?)"
+    when
+    	g : GUI()
+    then
+    	// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you in Mexico? (or in a Mexican restaurant?)");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry);        
+end
+
+rule "Are you in Mexico? (or in a Mexican restaurant?) - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you in Mexico? (or in a Mexican restaurant?)" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"1"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you in Mexico? (or in a Mexican restaurant?) - NO - Do you PwN nOoBs?"
+    when
+    	g : GUI()
+    	Enquiry(getQuestion() == "Are you in Mexico? (or in a Mexican restaurant?)" && getAnswer() == "NO")
+    then
+    	// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you PwN nOoBs?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry);       
+end
+
+rule "Do you PwN nOoBs? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you PwN nOoBs?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"2", "3", "4", "5"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you PwN nOoBs? - NO - Are you on a diet?"
+    when
+    	g : GUI()
+    	Enquiry(getQuestion() == "Do you PwN nOoBs?" && getAnswer() == "NO")
+    then
+    	// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you on a diet?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry);         
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+rule "Are you on a diet? - YES - Are you ostentatious?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you on a diet?" && getAnswer() == "YES")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you ostentatious?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Are you ostentatious? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you ostentatious?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"6", "7", "8", "9"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you ostentatious? - NO - Do you need a boost?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you ostentatious?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you need a boost?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Do you need a boost? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you need a boost?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"20", "21", "22", "23", "24"};
+		g.showResult(pictures);
+		end
+
+rule "Do you need a boost? - NO"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you need a boost?" && getAnswer() == "NO")
+	then
+		// Here GUI
+		String[] pictures = {"13", "14", "15", "16", "17"};
+		g.showResult(pictures);
+		end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you on a diet? - NO - Are you animated?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you on a diet?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you animated?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Are you animated? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you animated?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"10", "11", "12"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you animated? - NO - Are you a juggalo?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you animated?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you a juggalo?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Are you a juggalo? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you a juggalo?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"18"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you a juggalo? - NO - Do you like the aftertaste of dirt?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you a juggalo?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you like the aftertaste of dirt?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Do you like the aftertaste of dirt? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you like the aftertaste of dirt?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"19"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you like the aftertaste of dirt? - NO - Are you Tay Zonday?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you like the aftertaste of dirt?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you Tay Zonday?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Are you Tay Zonday? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you Tay Zonday?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"26"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you Tay Zonday? - NO - Are you in Brasil?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you Tay Zonday?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you in Brasil?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Are you in Brasil? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you in Brasil?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"25"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you in Brasil? - NO - Are you on the dole?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you in Brasil?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you on the dole?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Are you on the dole? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you on the dole?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"27"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you on the dole? - NO - Have you the flux capacitor?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you on the dole?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Have you the flux capacitor?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Have you the flux capacitor? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Have you the flux capacitor?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"28", "29", "30", "31"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Have you the flux capacitor? - NO - Do you like drinking bubble gum?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Have you the flux capacitor?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you like drinking bubble gum?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Do you like drinking bubble gum? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you like drinking bubble gum?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"36"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you like drinking bubble gum? - NO - Are you pulling an all-nighter?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you like drinking bubble gum?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you pulling an all-nighter?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Are you pulling an all-nighter? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you pulling an all-nighter?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"32", "33", "34", "35"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you pulling an all-nighter? - NO - Are you shopping at Tesco?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you pulling an all-nighter?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you shopping at Tesco?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Are you shopping at Tesco? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you shopping at Tesco?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"37"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you shopping at Tesco? - NO - Are you at a picnic?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you shopping at Tesco?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Are you at a picnic?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Are you at a picnic? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you at a picnic?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"38", "39", "40", "41"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Are you at a picnic? - NO - Can you buy any of these?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Are you at a picnic?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Can you buy any of these?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        String[] pictures = {"42", "43", "44", "45", "46"};
+		g.showResult(pictures);
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options)); 
+        g.close();
+		insert(enquiry); 
+end
+
+rule "Can you buy any of these? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Can you buy any of these?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"42", "43", "44", "45", "46"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Can you buy any of these? - NO - Do you enjoy Tyler Perry movies?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Can you buy any of these?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you enjoy Tyler Perry movies?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));        
+		insert(enquiry); 
+end
+
+rule "Do you enjoy Tyler Perry movies? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you enjoy Tyler Perry movies?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"47", "48", "49", "50", "51", "52"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you enjoy Tyler Perry movies? - NO - Do you want root beer?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you enjoy Tyler Perry movies?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you want root beer?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you want root beer? - YES - Do you care about quality?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you want root beer?" && getAnswer() == "YES")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you care about quality?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Do you care about quality? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you care about quality?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"61", "62", "63", "64", "65", "66"};
+		g.showResult(pictures);
+end
+
+rule "Do you care about quality? - NO"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you care about quality?" && getAnswer() == "NO")
+	then
+		// Here GUI
+		String[] pictures = {"53", "54", "60"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you want root beer? - NO - Do you have a tummy ache? (...or are you trying to be classy?)"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you want root beer?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you have a tummy ache? (...or are you trying to be classy?)");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Do you have a tummy ache? (...or are you trying to be classy?) - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you have a tummy ache? (...or are you trying to be classy?)" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"55", "56", "57", "58", "59"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you have a tummy ache? (...or are you trying to be classy?) - NO - Do you care about HFCS?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you have a tummy ache? (...or are you trying to be classy?)" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you care about HFCS?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you care about HFCS? - YES - ....and taste?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you care about HFCS?" && getAnswer() == "YES")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("....and taste?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));  
+		insert(enquiry); 
+end
+
+rule "....and taste? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "....and taste?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"70", "71", "72"};
+		g.showResult(pictures);
+end
+
+rule "....and taste? - NO"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "....and taste?" && getAnswer() == "NO")
+	then
+		// Here GUI
+		String[] pictures = {"67", "68", "69"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you care about HFCS? - NO - Do you enjoy \"cherry\" with your beverage?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you care about HFCS?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you enjoy \"cherry\" with your beverage?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Do you enjoy \"cherry\" with your beverage? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you enjoy \"cherry\" with your beverage?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"74", "75", "76", "77"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you enjoy \"cherry\" with your beverage? - NO - Can you tolerate caffeine?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you enjoy \"cherry\" with your beverage?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Can you tolerate caffeine?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));           
+		insert(enquiry); 
+end
+
+rule "Can you tolerate caffeine? - NO"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Can you tolerate caffeine?" && getAnswer() == "NO")
+	then
+		// Here GUI
+		String[] pictures = {"82", "83", "84", "85", "86"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Can you tolerate caffeine? - YES - Do you carry a backpack?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Can you tolerate caffeine?" && getAnswer() == "YES")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you carry a backpack?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Do you carry a backpack? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you carry a backpack?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"78", "79", "80", "81"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you carry a backpack? - NO - Do you want your tastebuds to sing?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you carry a backpack?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you want your tastebuds to sing?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Do you want your tastebuds to sing? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you want your tastebuds to sing?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"87"};
+		g.showResult(pictures);
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Do you want your tastebuds to sing? - NO - Do you long for \"the simpler\" days?"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you want your tastebuds to sing?" && getAnswer() == "NO")
+	then
+		// Set Enquiry
+        Enquiry enquiry = new Enquiry();
+        enquiry.setQuestion("Do you long for \"the simpler\" days?");
+        String[] options = {"YES", "NO"};
+        enquiry.setOptions(options);
+        
+        // Here GUI
+        enquiry.setAnswer(g.doChoice(kcontext.getKieRuntime(), enquiry.getQuestion(), options));
+		insert(enquiry); 
+end
+
+rule "Do you long for \"the simpler\" days? - YES"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you long for \"the simpler\" days?" && getAnswer() == "YES")
+	then
+		// Here GUI
+		String[] pictures = {"89", "90", "91", "92"};
+		g.showResult(pictures);
+end
+
+rule "Do you long for \"the simpler\" days? - NO"
+	when
+		g : GUI()
+		Enquiry(getQuestion() == "Do you long for \"the simpler\" days?" && getAnswer() == "NO")
+	then
+		// Here GUI
+		String[] pictures = {"88", "93", "94"};
+		g.showResult(pictures);
+end
